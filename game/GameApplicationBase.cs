@@ -1,6 +1,11 @@
 global using osu.Framework.Allocation;
-using mario.Game.Resources;
+global using osu.Framework.Bindables;
+global using osu.Framework.Graphics;
+global using osu.Framework.Logging;
+global using osu.Framework.Utils;
+global using osuTK;
 using osu.Framework.IO.Stores;
+using mario.Game.Resources;
 
 namespace mario.Game;
 
