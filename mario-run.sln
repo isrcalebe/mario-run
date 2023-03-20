@@ -1,0 +1,48 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.31903.59
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "mario.Desktop", "desktop\mario.Desktop.csproj", "{46963CA4-647E-48DB-A1B0-046D161409B4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "mario.Game", "game\mario.Game.csproj", "{8BD605D1-71EF-4422-825E-7BC6E2FB67A0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "mario.Game.Resources", "resources\mario.Game.Resources.csproj", "{3A251124-B24B-43BB-8B1E-CE743C4ED9D9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "mario.Game.Tests", "tests\mario.Game.Tests.csproj", "{AE92085B-911B-49EC-97C6-D38AB1C98D6D}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{84F266CA-B5E9-4D2E-98D9-925722398184}"
+	ProjectSection(SolutionItems) = preProject
+		.gitignore = .gitignore
+		.editorconfig = .editorconfig
+		Directory.Build.props = Directory.Build.props
+		mario-run.sln.DotSettings = mario-run.sln.DotSettings
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{46963CA4-647E-48DB-A1B0-046D161409B4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{46963CA4-647E-48DB-A1B0-046D161409B4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{46963CA4-647E-48DB-A1B0-046D161409B4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{46963CA4-647E-48DB-A1B0-046D161409B4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8BD605D1-71EF-4422-825E-7BC6E2FB67A0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8BD605D1-71EF-4422-825E-7BC6E2FB67A0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8BD605D1-71EF-4422-825E-7BC6E2FB67A0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8BD605D1-71EF-4422-825E-7BC6E2FB67A0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3A251124-B24B-43BB-8B1E-CE743C4ED9D9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3A251124-B24B-43BB-8B1E-CE743C4ED9D9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3A251124-B24B-43BB-8B1E-CE743C4ED9D9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3A251124-B24B-43BB-8B1E-CE743C4ED9D9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AE92085B-911B-49EC-97C6-D38AB1C98D6D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AE92085B-911B-49EC-97C6-D38AB1C98D6D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AE92085B-911B-49EC-97C6-D38AB1C98D6D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AE92085B-911B-49EC-97C6-D38AB1C98D6D}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
