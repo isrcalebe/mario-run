@@ -6,12 +6,16 @@ global using osu.Framework.Utils;
 global using osuTK;
 using osu.Framework.IO.Stores;
 using mario.Game.Resources;
+using osu.Framework.Graphics.Textures;
 
 namespace mario.Game;
 
 public abstract partial class GameApplicationBase : osu.Framework.Game
 {
     private DependencyContainer? dependencies;
+
+    protected override TextureFilteringMode DefaultTextureFilteringMode
+        => TextureFilteringMode.Nearest;
 
     [BackgroundDependencyLoader]
     private void load()
