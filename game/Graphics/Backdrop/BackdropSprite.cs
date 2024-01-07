@@ -20,11 +20,11 @@ public partial class BackdropSprite : Sprite
 
     protected override void Update()
     {
+        base.Update();
+
         var size = Texture.Size;
         var aspectRatio = size.X / size.Y;
 
         Width = (float)Math.Ceiling(DrawHeight * aspectRatio);
-
-        base.Update();
     }
 }

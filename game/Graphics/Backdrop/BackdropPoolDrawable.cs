@@ -69,7 +69,7 @@ public sealed partial class BackdropPoolDrawable : CompositeDrawable
         foreach (var childSprite in InternalChildren)
         {
             var width = childSprite.DrawWidth * sprite.Scale.X;
-            childSprite.Position = new Vector2(offset, childSprite.Y);
+            childSprite.Position = new Vector2(offset, childSprite.Position.Y);
 
             var fromVector = new Vector2(offset, childSprite.Y);
             var toVector = new Vector2(offset - width, childSprite.Y);
