@@ -30,13 +30,14 @@ public partial class GameApplication : GameApplicationBase
             Anchor = Anchor.Centre,
             Origin = Anchor.Centre
         };
+
         gameOverSprite = new TitleSprite(@"game-over")
         {
             Anchor = Anchor.Centre,
             Origin = Anchor.Centre
         };
 
-        screenFlash = new ScreenFlash()
+        screenFlash = new ScreenFlash
         {
             Colour = Colour4.White
         };
