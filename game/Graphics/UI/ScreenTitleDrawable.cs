@@ -4,7 +4,7 @@ using osu.Framework.Graphics.Textures;
 
 namespace mario.Game.Graphics.UI;
 
-public partial class TitleSprite : CompositeDrawable
+public partial class ScreenTitleDrawable : CompositeDrawable
 {
     private readonly string textureName;
 
@@ -12,7 +12,7 @@ public partial class TitleSprite : CompositeDrawable
 
     public override Axes AutoSizeAxes => Axes.Both;
 
-    public TitleSprite(string textureName)
+    public ScreenTitleDrawable(string textureName)
     {
         this.textureName = textureName;
     }

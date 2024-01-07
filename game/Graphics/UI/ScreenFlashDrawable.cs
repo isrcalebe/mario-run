@@ -2,16 +2,16 @@
 
 namespace mario.Game.Graphics.UI;
 
-public partial class ScreenFlash : Box
+public sealed partial class ScreenFlashDrawable : Box
 {
     public override Axes RelativeSizeAxes => Axes.Both;
 
-    public ScreenFlash()
+    public ScreenFlashDrawable()
     {
         Alpha = 0.0f;
     }
 
-    public virtual void Flash(double fadeInDuration, double fadeOutDuration)
+    public void Flash(double fadeInDuration, double fadeOutDuration)
         => this.FadeIn(fadeInDuration).Then()
                .FadeOut(fadeOutDuration);
 }

@@ -1,7 +1,7 @@
 ﻿using System;
 using osu.Framework.Graphics.Sprites;
 
-namespace mario.Game.Graphics.Backdrop;
+namespace mario.Game.Graphics.Backdrops;
 
 public partial class BackdropSprite : Sprite
 {

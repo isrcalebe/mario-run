@@ -2,11 +2,11 @@
 using osu.Framework.Graphics.Containers;
 using osu.Framework.Graphics.Sprites;
 
-namespace mario.Game.Graphics.Backdrop;
+namespace mario.Game.Graphics.Backdrops;
 
 public sealed partial class BackdropPoolDrawable : CompositeDrawable
 {
-    public Func<Sprite>? CreateSpriteCallback { get; init; }
+    private readonly Func<Sprite> createSpriteCallback;
 
     public double Duration { get; set; } = 2000.0d;
 
@@ -18,10 +18,15 @@ public sealed partial class BackdropPoolDrawable : CompositeDrawable
 
     private Vector2 lastSize;
 
+    public BackdropPoolDrawable(Func<Sprite> createSpriteCallback)
+    {
+        this.createSpriteCallback = createSpriteCallback;
+    }
+
     [BackgroundDependencyLoader]
     private void load()
     {
-        AddInternal(CreateSpriteCallback?.Invoke());
+        AddInternal(createSpriteCallback());
     }
 
     public void Start()
@@ -52,7 +57,7 @@ public sealed partial class BackdropPoolDrawable : CompositeDrawable
 
     private void updateLayout()
     {
-        var sprite = (Sprite)InternalChildren[0];
+        var sprite = InternalChildren[0];
         var spriteCount = (int)Math.Ceiling(DrawWidth / sprite.DrawWidth) + 1;
 
         var offset = 0.0f;
@@ -63,7 +68,7 @@ public sealed partial class BackdropPoolDrawable : CompositeDrawable
                 RemoveInternal(InternalChildren[^1], true);
 
             while (InternalChildren.Count < spriteCount)
-                AddInternal(CreateSpriteCallback?.Invoke());
+                AddInternal(createSpriteCallback());
         }
 
         foreach (var childSprite in InternalChildren)
@@ -76,9 +81,9 @@ public sealed partial class BackdropPoolDrawable : CompositeDrawable
 
             if (Running)
             {
-                childSprite.Loop(backdrop => backdrop
-                                             .MoveTo(fromVector)
-                                             .MoveTo(toVector, Duration));
+                childSprite?.Loop(backdrop => backdrop
+                                              .MoveTo(fromVector)
+                                              .MoveTo(toVector, Duration));
             }
 
             offset += width - 1;

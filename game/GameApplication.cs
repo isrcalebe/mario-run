@@ -1,7 +1,8 @@
+using mario.Game.Gameplay;
 using mario.Game.Graphics.Backgrounds;
+using mario.Game.Graphics.Playables;
 using mario.Game.Graphics.UI;
 using osu.Framework.Graphics.Containers;
-using osu.Framework.Input.Events;
 
 namespace mario.Game;
 
@@ -11,10 +12,16 @@ public partial class GameApplication : GameApplicationBase
 
     private ParallaxBackgroundDrawable? parallaxBackground;
 
-    private TitleSprite? getReadySprite;
-    private TitleSprite? gameOverSprite;
+    private PhysicalGroundDrawable? physicalGround;
 
-    private ScreenFlash? screenFlash;
+    private MarioAnimationDrawable? player;
+
+    private ScreenTitleDrawable? getReadySprite;
+    private ScreenTitleDrawable? gameOverSprite;
+
+    private ScreenFlashDrawable? screenFlash;
+
+    private const float bounds_y = -96.0f;
 
     [BackgroundDependencyLoader]
     private void load()
@@ -25,19 +32,34 @@ public partial class GameApplication : GameApplicationBase
             Size = Vector2.One
         };
 
-        getReadySprite = new TitleSprite(@"get-ready")
+        physicalGround = new PhysicalGroundDrawable
+        {
+            RelativeSizeAxes = Axes.Both,
+            Size = Vector2.One,
+        };
+
+        player = new MarioAnimationDrawable
+        {
+            Anchor = Anchor.BottomLeft,
+            Origin = Anchor.BottomCentre,
+            Scale = new Vector2(4.0f),
+            X = 120.0f,
+            Y = bounds_y,
+        };
+
+        getReadySprite = new ScreenTitleDrawable(@"get-ready")
         {
             Anchor = Anchor.Centre,
             Origin = Anchor.Centre
         };
 
-        gameOverSprite = new TitleSprite(@"game-over")
+        gameOverSprite = new ScreenTitleDrawable(@"game-over")
         {
             Anchor = Anchor.Centre,
             Origin = Anchor.Centre
         };
 
-        screenFlash = new ScreenFlash
+        screenFlash = new ScreenFlashDrawable
         {
             Colour = Colour4.White
         };
@@ -47,6 +69,8 @@ public partial class GameApplication : GameApplicationBase
         gameScreen.Children = new Drawable[]
         {
             parallaxBackground,
+            physicalGround,
+            player,
             getReadySprite,
             screenFlash
         };
@@ -57,16 +81,9 @@ public partial class GameApplication : GameApplicationBase
     protected override void LoadComplete()
     {
         parallaxBackground?.Start();
+        physicalGround?.Start();
 
         base.LoadComplete();
-    }
-
-    protected override bool OnKeyDown(KeyDownEvent e)
-    {
-        // Just for testing :)
-        screenFlash?.Flash(0.0d, 700.0d);
-
-        return base.OnKeyDown(e);
     }
 
     protected override IReadOnlyDependencyContainer CreateChildDependencies(IReadOnlyDependencyContainer parent)
