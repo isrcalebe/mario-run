@@ -4,7 +4,7 @@ using osu.Framework.Graphics.Textures;
 
 namespace mario.Game.Graphics.Playables;
 
-public sealed partial class MarioAnimationDrawable : TextureAnimation
+public partial class MarioAnimationDrawable : TextureAnimation
 {
     private const double idle_interval_duration = 1.0d;
     private const double walk_interval_duration = 200.0d;
@@ -34,6 +34,14 @@ public sealed partial class MarioAnimationDrawable : TextureAnimation
                 AddFrame(new FrameData<Texture?>
                 {
                     Content = textures?.Get(@"Playables/Mario/idle"),
+                    Duration = idle_interval_duration,
+                });
+                break;
+
+            case MarioAnimationState.LookUp:
+                AddFrame(new FrameData<Texture?>
+                {
+                    Content = textures?.Get(@"Playables/Mario/look-up"),
                     Duration = idle_interval_duration,
                 });
                 break;
@@ -144,6 +152,7 @@ public sealed partial class MarioAnimationDrawable : TextureAnimation
     public enum MarioAnimationState
     {
         Idle = 0,
+        LookUp,
         Walk,
         Jump,
         Run,

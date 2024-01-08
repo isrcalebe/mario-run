@@ -20,6 +20,7 @@ public partial class TestSceneMarioAnimationDrawable : GameApplicationTestScene
         });
 
         AddStep("set idle state", () => marionAnimation.State.Value = MarioAnimationDrawable.MarioAnimationState.Idle);
+        AddStep("set look up state", () => marionAnimation.State.Value = MarioAnimationDrawable.MarioAnimationState.LookUp);
         AddStep("set walk state", () => marionAnimation.State.Value = MarioAnimationDrawable.MarioAnimationState.Walk);
         AddStep("set jump state", () => marionAnimation.State.Value = MarioAnimationDrawable.MarioAnimationState.Jump);
         AddStep("set fall state", () => marionAnimation.State.Value = MarioAnimationDrawable.MarioAnimationState.Fall);

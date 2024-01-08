@@ -22,7 +22,7 @@ public abstract partial class GameApplicationBase : osu.Framework.Game
     {
         Resources.AddStore(new DllResourceStore(GameResources.Assembly));
 
-        AddFont(Resources, @"IbmVga");
+        AddFont(Resources, @"Fonts/IbmVga");
 
         Host.Window.Title = "MARIO RUN";
     }
