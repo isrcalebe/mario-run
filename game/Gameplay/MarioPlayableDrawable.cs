@@ -9,11 +9,11 @@ namespace mario.Game.Gameplay;
 
 public partial class MarioPlayableDrawable : CompositeDrawable
 {
-    public double VerticalStopSpeedMultiplier = 0.45d;
-    public double JumpSpeed = 20.0d;
-    public double GravityUp = 0.5d;
-    public double GravityDown = 0.842d;
-    public double MaxVerticalSpeed = 14.0d;
+    public double VerticalStopSpeedMultiplier = 0.25d;
+    public double JumpSpeed = 15.95d;
+    public double GravityUp = 0.75d;
+    public double GravityDown = 0.6d;
+    public double MaxVerticalSpeed = 30.0d;
 
     private double verticalSpeed;
     private bool availableJump;
@@ -24,8 +24,9 @@ public partial class MarioPlayableDrawable : CompositeDrawable
     private DrawableSample? jumpSample;
     private DrawableSample? spinSample;
 
-    private MarioPlayableState state;
     public float GroundY { get; set; }
+
+    public bool LockInput { get; set; }
 
     [BackgroundDependencyLoader]
     private void load(AudioManager audio)
@@ -46,6 +47,9 @@ public partial class MarioPlayableDrawable : CompositeDrawable
 
     protected override bool OnKeyDown(KeyDownEvent e)
     {
+        if (LockInput)
+            return base.OnKeyDown(e);
+
         switch (e)
         {
             case { Repeat: false, Key: Key.Up }:
@@ -164,15 +168,10 @@ public partial class MarioPlayableDrawable : CompositeDrawable
             }
 
             case 0.0d:
-                animation!.State.Value = MarioAnimationDrawable.MarioAnimationState.Walk;
+                animation!.State.Value = LockInput
+                    ? MarioAnimationDrawable.MarioAnimationState.Idle
+                    : MarioAnimationDrawable.MarioAnimationState.Walk;
                 break;
         }
-    }
-
-    public enum MarioPlayableState
-    {
-        Idle,
-        Jumping,
-        Falling
     }
 }
